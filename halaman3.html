@@ -32,7 +32,7 @@
             <div class="col-12">
                 <div class="mb-3">
                     <label for="file_ktp" class="form-label">FOTO Ktp</label>
-                    <input type="file" class="form-control" id="file_ktp" name="file_ktp" onchange="validasiFile(this, ['pdf', 'png'], 500)" required>
+                    <input type="file" class="form-control" id="file_ktp" name="file_ktp" onchange="validasiFile(this, ['pdf'], 500)" required>
                 </div>
             </div>
             
@@ -47,6 +47,7 @@
             <div class="col-12" style="margin-top: 30px;">
                <button type="submit" class="btn btn-primary btn-kirim">KIRIM</button>
 
+               <a href="index.html" class="btn btn-danger btn-logout d-none " >LOG OUT</a>
 
                <button class="btn btn-primary btn-loading d-none" type="button" disabled>
                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
@@ -89,6 +90,7 @@
     const btnKirim = document.querySelector('.btn-kirim');
     const btnLoading = document.querySelector('.btn-loading');
     const myAlert = document.querySelector('.my-alert');
+    const logOut = document.querySelector('.btn-logout');
   
     //Validasi file biasa tanpa sweet alert
     //     const validasiFile = (data, type = ['pdf'], size = 500) => {
@@ -159,9 +161,13 @@
       .then(response => {
           // tampilkan tombol kirim, hilangkan tombol loading
           btnLoading.classList.toggle('d-none');
-          btnKirim.classList.toggle('d-none');
+
+          // tampilkan tombol kirim berdampingan dgn log out
+          // btnKirim.classList.toggle('d-none');
+
           // tampilkan alert
           myAlert.classList.toggle('d-none');
+          logOut.classList.toggle('d-none');
           // reset form
           form.reset();
           console.log('Success!', response);
